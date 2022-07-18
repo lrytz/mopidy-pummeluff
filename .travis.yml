@@ -5,7 +5,7 @@ python:
 
 install:
   # Workaround for pi-rc522 dependency issue.
-  - pip install spidev RPi.GPIO
+  - pip install spidev OPi.GPIO
 
   # Install package develop
   - pip install -e .[develop]

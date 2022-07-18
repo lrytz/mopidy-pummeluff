@@ -10,7 +10,7 @@ from threading import Thread
 from time import time
 from logging import getLogger
 
-import RPi.GPIO as GPIO
+import OPi.GPIO as GPIO
 from pirc522 import RFID
 
 from mopidy_pummeluff.registry import REGISTRY

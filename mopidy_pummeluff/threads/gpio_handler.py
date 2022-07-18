@@ -10,7 +10,8 @@ from threading import Thread
 from logging import getLogger
 from time import time
 
-import RPi.GPIO as GPIO
+import OPi.GPIO as GPIO
+import orangepi.pi3
 
 from mopidy_pummeluff.actions import Shutdown, PlayPause, Stop, PreviousTrack, NextTrack
 from mopidy_pummeluff.sound import play_sound
@@ -53,7 +54,7 @@ class GPIOHandler(Thread):
         '''
         Run the thread.
         '''
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(orangepi.pi3.BOARD)
 
         for pin in self.button_pins:
             LOGGER.debug('Setup pin %s as button pin', pin)
