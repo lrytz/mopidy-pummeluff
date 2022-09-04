@@ -10,6 +10,8 @@ from threading import Thread
 from time import time
 from logging import getLogger
 
+import subprocess
+
 import OPi.GPIO as GPIO
 from pirc522 import RFID
 
@@ -106,12 +108,14 @@ class TagReader(Thread):
         try:
             action = REGISTRY[str(uid)]
             LOGGER.info('Triggering action of registered tag')
-            play_sound('success.wav')
+            subprocess.Popen(['/usr/local/bin/bip', '2'])
+            # play_sound('success.wav')
             action(self.core)
 
         except KeyError:
             LOGGER.info('Tag is not registered, thus doing nothing')
-            play_sound('fail.wav')
+            subprocess.Popen(['/usr/local/bin/bip', '3'])
+            # play_sound('fail.wav')
             action = Action(uid=uid)
 
         action.scanned   = time()
